@@ -1,0 +1,9 @@
+[submodule "astar/parser/grammar/tree-sitter/tree-sitter-c"]
+	path = astar/parser/grammar/tree-sitter/tree-sitter-c
+	url = https://github.com/tree-sitter/tree-sitter-c.git
+[submodule "astar/parser/grammar/tree-sitter/tree-sitter-cpp"]
+	path = astar/parser/grammar/tree-sitter/tree-sitter-cpp
+	url = https://github.com/tree-sitter/tree-sitter-cpp.git
+[submodule "astar/parser/grammar/tree-sitter/tree-sitter-python"]
+	path = astar/parser/grammar/tree-sitter/tree-sitter-python
+	url = https://github.com/tree-sitter/tree-sitter-python.git
