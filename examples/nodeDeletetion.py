@@ -1,14 +1,10 @@
+from os import path
 from astar import AParser, AstAnalyser, AstOperator, ACodeGenerator
 from anytree import RenderTree
 
 def main():
-    code = '''
-    def max(a, b):
-        if a > b:
-            return a
-        else:
-            return b
-    '''
+    with open(path.join(path.dirname(__file__), "input", "py_lang.py")) as f:
+        code = f.read()
 
     parser = AParser()
     tree = parser.parse(text=code, lang="python")
@@ -24,9 +20,9 @@ def main():
     editedTree = operator.delete(root=tree, target=sample)
     print(RenderTree(editedTree).by_attr("type"))
 
-    generator = ACodeGenerator()
-    print(generator.generate(root=tree))
-    print(generator.generate(root=editedTree))
+    # generator = ACodeGenerator()
+    # print(generator.generate(root=tree))
+    # print(generator.generate(root=editedTree))
 
 if __name__ == "__main__":
     main()

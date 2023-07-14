@@ -1,14 +1,10 @@
+from os import path
 from astar import AParser
 from anytree import RenderTree
 
 def main():
-    code = '''
-    def max(a, b):
-        if a > b:
-            return a
-        else:
-            return b
-    '''
+    with open(path.join(path.dirname(__file__), "input", "py_lang.py")) as f:
+        code = f.read()
 
     parser = AParser()
     tree = parser.parse(text=code, lang="python")
