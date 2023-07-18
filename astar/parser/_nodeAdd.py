@@ -12,14 +12,23 @@ allAttr = [
     "text", "type", "walk"
     ]
 
-def _addNode(source, parent=None):
+tempAttr = [
+    "child_by_field_id", "child_by_field_name", 
+    "children_by_field_id", "end_byte", "end_point",
+    "has_changes", "has_error", "id", 
+    "is_missing", "is_named", 
+    "sexp", "start_byte", "start_point", 
+    "text", "type", "walk"
+    ]
+
+def _addNode(source, parent=None, textList:list=None):
     sourceAttrs = dir(source)
-    filterdAttrs = [attr for attr in sourceAttrs if attr in allAttr]
+    filterdAttrs = [attr for attr in sourceAttrs if attr in tempAttr]
     dictAttrs = {attr:getattr(source, attr) for attr in filterdAttrs}
-    del dictAttrs["child_count"]
-    del dictAttrs["children"]
-    del dictAttrs["parent"]
         
-    return ANode(name=str(dictAttrs["id"]), 
-                 parent=parent, 
-                 dictAttrs=dictAttrs)
+    if parent == None:
+        return ANode(name=str(dictAttrs["id"]), 
+                     parent=parent, dictAttrs=dictAttrs, textList=textList)
+    else:
+        return ANode(name=str(dictAttrs["id"]), 
+                     parent=parent, dictAttrs=dictAttrs)

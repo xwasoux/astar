@@ -25,17 +25,23 @@ class AParser:
         parser.set_language(ANY_LANGUAGE)
 
         self.tree = parser.parse(bytes(text, "utf8"))
-        self.cst = self._ts2Anytree(source=self.tree.root_node, parent=None)
+        self.textList = self._splitText(text)
+        self.cst = self._ts2Anytree(source=self.tree.root_node, parent=None, textList=self.textList)
 
         return self.cst
 
-    def _ts2Anytree(self, source, parent:ANode = None) -> None:
+    def _ts2Anytree(self, source, parent:ANode=None, textList:list=None) -> None:
         if parent == None:
-            target = _addNode(source)
+            target = _addNode(source=source, textList=textList)
         else:
-            target = _addNode(source, parent)
+            target = _addNode(source=source, parent=parent)
 
         for child in source.children:
             self._ts2Anytree(child, target)
 
         return target
+
+    def _splitText(self, text:str) -> list:
+        lineText = text.splitlines()
+        textList = [list(splitStr)+["\n"] for splitStr in lineText]
+        return textList
