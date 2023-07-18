@@ -1,5 +1,4 @@
-FROM ubuntu:20.04
-# FROM python:3.9
+FROM python:3.9
 
 ENV TZ=Asia/Tokyo
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -23,4 +22,3 @@ COPY addSubmodules.sh .
 WORKDIR /app
 
 RUN pip install -r requirements.txt
-# CMD [ "addSubmodules.sh" ] 
