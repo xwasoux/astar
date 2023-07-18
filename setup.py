@@ -6,7 +6,7 @@ DESCRIPTION = "Astar: An unified programming language parser & analyse AST tool 
 
 AUTHOR = 'Wakana Hashimoto'
 AUTHOR_EMAIL = 'oxwasouxo@gmail.com'
-URL = 'https://github.com/xwasoux/astar.git'
+URL = 'https://github.com/xwasoux'
 
 LICENSE = 'MIT'
 DOWNLOAD_URL = 'https://github.com/xwasoux/astar.git'
@@ -14,15 +14,10 @@ PYTHON_REQUIRES = ">=3.8"
 
 INSTALL_REQUIRES = [
     'anytree',
+    'graphviz',
+    'pydot',
     'tree_sitter',
 ]
-
-EXTRAS_REQUIRE = {
-    'tutorial': [
-        'mlxtend>=0.18.0',
-        'xgboost>=1.4.2',
-    ]
-}
 
 PACKAGES = [
     'astar'
@@ -38,8 +33,6 @@ CLASSIFIERS = [
     'Topic :: Scientific/Engineering',
     'Topic :: Scientific/Engineering :: Visualization',
     'Topic :: Scientific/Engineering :: Artificial Intelligence',
-    'Topic :: Multimedia :: Graphics',
-    'Framework :: Matplotlib',
 ]
 
 setup(
@@ -51,7 +44,6 @@ setup(
     download_url=DOWNLOAD_URL,
     python_requires=PYTHON_REQUIRES,
     install_requires=INSTALL_REQUIRES,
-    extras_require=EXTRAS_REQUIRE,
 
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
