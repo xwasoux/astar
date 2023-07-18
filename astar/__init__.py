@@ -13,3 +13,5 @@ __all__ = ["ANode",
            "ANodeTraverser", 
            "AstOperator", 
            "ACodeGenerator"]
+
+__version__ = "0.0.1"
