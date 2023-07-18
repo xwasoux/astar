@@ -4,7 +4,7 @@ FROM ubuntu:20.04
 ENV TZ=Asia/Tokyo
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt update && apt upgrade
+RUN apt -y update && apt -y upgrade
 RUN apt -y install \
 		build-essential \
 		python3-pip \
