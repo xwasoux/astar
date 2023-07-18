@@ -10,7 +10,6 @@ URL = 'https://github.com/xwasoux/astar.git'
 
 LICENSE = 'MIT'
 DOWNLOAD_URL = 'https://github.com/xwasoux/astar.git'
-# VERSION = astar.__version__
 PYTHON_REQUIRES = ">=3.8"
 
 INSTALL_REQUIRES = [
@@ -43,18 +42,10 @@ CLASSIFIERS = [
     'Framework :: Matplotlib',
 ]
 
-# with open('README.rst', 'r') as fp:
-#     readme = fp.read()
-# with open('CONTACT.txt', 'r') as fp:
-#     contacts = fp.read()
-# long_description = readme + '\n\n' + contacts
-
 setup(
     name=NAME,
     description=DESCRIPTION,
-    # long_description=long_description,
     license=LICENSE,
-    # version=VERSION,
 
     url=URL,
     download_url=DOWNLOAD_URL,
