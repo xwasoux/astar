@@ -1,4 +1,4 @@
-cd ./astar/parser
+cd ./astars/parser
 mkdir grammar grammar/tree-sitter 
 
 git submodule add https://github.com/tree-sitter/tree-sitter-c.git grammar/tree-sitter/tree-sitter-c

@@ -1,5 +1,5 @@
 from os import path
-from astar import AParser
+from astars import AParser
 from anytree import RenderTree
 
 def main():

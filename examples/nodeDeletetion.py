@@ -1,7 +1,7 @@
 from os import path
 import logging
 from copy import deepcopy
-from astar import AParser, AstAnalyser, AstOperator, ACodeGenerator
+from astars import AParser, AstAnalyser, AstOperator, ACodeGenerator
 from anytree import RenderTree
 
 logging.basicConfig(format='%(asctime)s -\n %(message)s',

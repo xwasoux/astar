@@ -1,13 +1,13 @@
 from os import path
 from tree_sitter import Language, Parser, Node
 
-LIB_PATH = path.join("..", "astar", "parser", "grammar", "tree-sitter", "languages.so")
+LIB_PATH = path.join("..", "astars", "parser", "grammar", "tree-sitter", "languages.so")
 Language.build_library(
     LIB_PATH,
     [
-        path.join("..", "astar", "parser", "grammar", "tree-sitter", "tree-sitter-python"),
-        path.join("..", "astar", "parser", "grammar", "tree-sitter", "tree-sitter-c"),
-        path.join("..", "astar", "parser", "grammar", "tree-sitter", "tree-sitter-cpp"),
+        path.join("..", "astars", "parser", "grammar", "tree-sitter", "tree-sitter-python"),
+        path.join("..", "astars", "parser", "grammar", "tree-sitter", "tree-sitter-c"),
+        path.join("..", "astars", "parser", "grammar", "tree-sitter", "tree-sitter-cpp"),
     ]
 )
 

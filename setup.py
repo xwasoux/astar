@@ -1,15 +1,15 @@
 from setuptools import setup
-import astar
+import astars
 
-NAME = 'astar'
-DESCRIPTION = "Astar: An unified programming language parser & analyse AST tool for Souece Code Analysis.  "
+NAME = 'astars'
+DESCRIPTION = "astars: An unified programming language parser & analyse AST tool for Souece Code Analysis.  "
 
 AUTHOR = 'Wakana Hashimoto'
 AUTHOR_EMAIL = 'oxwasouxo@gmail.com'
 URL = 'https://github.com/xwasoux'
 
 LICENSE = 'MIT'
-DOWNLOAD_URL = 'https://github.com/xwasoux/astar.git'
+DOWNLOAD_URL = 'https://github.com/xwasoux/astars.git'
 PYTHON_REQUIRES = ">=3.8"
 
 INSTALL_REQUIRES = [
@@ -20,7 +20,7 @@ INSTALL_REQUIRES = [
 ]
 
 PACKAGES = [
-    'astar'
+    'astars'
 ]
 
 CLASSIFIERS = [

@@ -1,5 +1,5 @@
 from os import path
-from astar import AParser, AstAnalyser
+from astars import AParser, AstAnalyser
 from anytree import RenderTree
 
 def main():
