@@ -16,16 +16,14 @@ def main():
     tree = parser.parse(text=code, lang="python")
     logging.info(RenderTree(tree).by_attr("type"))
 
-    analyser = AstAnalyser(tree=tree)
-    subunitNodeList = analyser.subunitNodes()
-
     operator = AstOperator()
     generator = ACodeGenerator()
     logging.info(generator.generate(root=tree))
 
     duplicatedTree = deepcopy(tree)
+    allNodeList = AstAnalyser.allNodes(duplicatedTree, "post", True)
 
-    for subtree in reversed(subunitNodeList):
+    for subtree in allNodeList:
         editedTree = operator.delete(root=duplicatedTree, target=subtree)
         logging.info(generator.generate(root=editedTree))
 
