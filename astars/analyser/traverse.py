@@ -24,69 +24,178 @@ subUnitName = [
     "comparison_operator", 
     ]
 
-class ANodeTraverser:
-    def __init__(self) -> None:
-        pass
-
-    def walk(self, target:str="all") -> list:
-        if target=="all":
-            pass
-        elif target=="subunit":
-            pass
-
+class AllNodeTraverser:
+    ## Pre-Order Traversal
     @staticmethod
-    def preOrder(root, target:str, reversal:bool=False):
-        def __preOrder(node, target:str, reversal:bool=False):
-            def __nodeCatchCond(node, target:str):
-                if target=="all":
-                    result.append(node)
-                elif target=="named":
-                    if node.is_named:
-                        result.append(node)
-                elif target=="subunit":
-                    if node.type in subUnitName:
-                        result.append(node)
-                
-            if reversal is False:
-                for child in node.children:
-                    __nodeCatchCond(node=child, target=target)
-                    __preOrder(node=child, reversal=reversal)
-            elif reversal is True:
-                for child in reversed(node.children):
-                    __nodeCatchCond(node=child, target=target)
-                    __preOrder(node=child, target=target, reversal=reversal)
+    def leftPreOrder(root) -> list:
+        def __preOrder(node) -> None:
+            nonlocal result
+            for child in node.children:
+                result.append(child)
+                __preOrder(node=child)
+            return None
             
-        result = []
-        __preOrder(node=root, target=target, reversal=reversal)
+        result = [root]
+        __preOrder(node=root)
         return result
             
-
     @staticmethod
-    def postOrder(root, target:str, reversal:bool=False) -> list:
-        def __postOrder(node, target:str, reversal:bool=False) -> None:
-            def __nodeCatchCond(node, target:str) -> None:
-                nonlocal result
-                if target=="all":
-                    result.append(node)
-                elif target=="named":
-                    if node.is_named:
-                        result.append(node)
-                elif target=="subunit":
-                    if node.type in subUnitName:
-                        result.append(node)
-                return None
-                
+    def rightPreOrder(root) -> list:
+        def __preOrder(node) -> None:
             nonlocal result
-            if reversal is False:
-                for child in node.children:
-                    __postOrder(node=child, target=target, reversal=reversal)
-                __nodeCatchCond(node=node, target=target)
-            elif reversal is True:
-                for child in reversed(node.children):
-                    __postOrder(node=child, target=target, reversal=reversal)
-                __nodeCatchCond(node=node, target=target)
+            for child in reversed(node.children):
+                result.append(child)
+                __preOrder(node=child)
+            return None
+            
+        result = [root]
+        __preOrder(node=root)
+        return result
+            
+    
+    ## Post-Order Traversal
+    @staticmethod
+    def leftPostOrder(root) -> list:
+        def __postOrder(node) -> None:
+            nonlocal result
+            for child in node.children:
+                __postOrder(node=child)
+            result.append(node)
             return None
             
         result = []
-        __postOrder(root, target, reversal)
+        __postOrder(root)
+        return result
+
+    @staticmethod
+    def rightPostOrder(root) -> list:
+        def __postOrder(node) -> None:
+            nonlocal result
+            for child in reversed(node.children):
+                __postOrder(node=child)
+            result.append(node)
+            return None
+            
+        result = []
+        __postOrder(root)
+        return result
+
+
+
+class AIDTraverser:
+    ## Pre-Order Traversal
+    @staticmethod
+    def leftPreOrder(root) -> list:
+        def __preOrder(node) -> None:
+            nonlocal result
+            for child in node.children:
+                result.append(child.type)
+                __preOrder(node=child)
+            return None
+            
+        result = [root.type]
+        __preOrder(node=root)
+        return result
+            
+    @staticmethod
+    def rightPreOrder(root) -> list:
+        def __preOrder(node) -> None:
+            nonlocal result
+            for child in reversed(node.children):
+                result.append(child.type)
+                __preOrder(node=child)
+            return None
+            
+        result = [root.type]
+        __preOrder(node=root)
+        return result
+            
+    
+    ## Post-Order Traversal
+    @staticmethod
+    def leftPostOrder(root) -> list:
+        def __postOrder(node) -> None:
+            nonlocal result
+            for child in node.children:
+                __postOrder(node=child)
+            result.append(node.type)
+            return None
+            
+        result = []
+        __postOrder(root)
+        return result
+
+    @staticmethod
+    def rightPostOrder(root) -> list:
+        def __postOrder(node) -> None:
+            nonlocal result
+            for child in reversed(node.children):
+                __postOrder(node=child)
+            result.append(node.type)
+            return None
+            
+        result = []
+        __postOrder(root)
+        return result
+
+
+
+class ANamedTraverser:
+    ## Pre-Order Traversal
+    @staticmethod
+    def leftPreOrder(root) -> list:
+        def __preOrder(node) -> None:
+            nonlocal result
+            for child in node.children:
+                if child.is_named:
+                    result.append(child)
+                __preOrder(node=child)
+            return None
+            
+        result = [root]
+        __preOrder(node=root)
+        return result
+            
+    @staticmethod
+    def rightPreOrder(root) -> list:
+        def __preOrder(node) -> None:
+            nonlocal result
+            for child in reversed(node.children):
+                if child.is_named:
+                    result.append(child)
+                __preOrder(node=child)
+            return None
+            
+        result = [root]
+        __preOrder(node=root)
+        return result
+            
+    
+    ## Post-Order Traversal
+    @staticmethod
+    def leftPostOrder(root) -> list:
+        def __postOrder(node) -> None:
+            nonlocal result
+            for child in node.children:
+                __postOrder(node=child)
+            if child.is_named:
+                result.append(node.type)
+            return None
+            
+        result = []
+        __postOrder(root)
+        return result
+
+    @staticmethod
+    def rightPostOrder(root) -> list:
+        def __postOrder(node) -> None:
+            nonlocal result
+            for child in reversed(node.children):
+                __postOrder(node=child)
+            if child.is_named:
+                result.append(node.type)
+            return None
+            
+        result = []
+        __postOrder(root)
         return result

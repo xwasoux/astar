@@ -2,7 +2,9 @@ from .nodes import ANode
 from .parser import AParser
 from .analyser import AstAnalyser
 from .analyser import Aupdater
-from .analyser import ANodeTraverser
+from .analyser import AllNodeTraverser
+from .analyser import AIDTraverser
+from .analyser import ANamedTraverser
 from .analyser import AstOperator
 from .analyser import ACodeGenerator
 
@@ -10,7 +12,9 @@ __all__ = ["ANode",
            "AParser", 
            "Aupdater", 
            "AstAnalyser", 
-           "ANodeTraverser", 
+           "AllNodeTraverser", 
+           "AIDTraverser", 
+           "ANamedTraverser", 
            "AstOperator", 
            "ACodeGenerator"]
 
