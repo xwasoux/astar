@@ -82,7 +82,7 @@ class AllNodeTraverser:
 
 
 
-class AIDTraverser:
+class ATypeTraverser:
     ## Pre-Order Traversal
     @staticmethod
     def leftPreOrder(root) -> list:
