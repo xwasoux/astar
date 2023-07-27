@@ -140,6 +140,64 @@ class ATypeTraverser:
 
 
 
+class AIDTraverser:
+    ## Pre-Order Traversal
+    @staticmethod
+    def leftPreOrder(root) -> list:
+        def __preOrder(node) -> None:
+            nonlocal result
+            for child in node.children:
+                result.append(child.id)
+                __preOrder(node=child)
+            return None
+            
+        result = [root.id]
+        __preOrder(node=root)
+        return result
+            
+    @staticmethod
+    def rightPreOrder(root) -> list:
+        def __preOrder(node) -> None:
+            nonlocal result
+            for child in reversed(node.children):
+                result.append(child.id)
+                __preOrder(node=child)
+            return None
+            
+        result = [root.id]
+        __preOrder(node=root)
+        return result
+            
+    
+    ## Post-Order Traversal
+    @staticmethod
+    def leftPostOrder(root) -> list:
+        def __postOrder(node) -> None:
+            nonlocal result
+            for child in node.children:
+                __postOrder(node=child)
+            result.append(node.id)
+            return None
+            
+        result = []
+        __postOrder(root)
+        return result
+
+    @staticmethod
+    def rightPostOrder(root) -> list:
+        def __postOrder(node) -> None:
+            nonlocal result
+            for child in reversed(node.children):
+                __postOrder(node=child)
+            result.append(node.id)
+            return None
+            
+        result = []
+        __postOrder(root)
+        return result
+
+
+
 class ANamedTraverser:
     ## Pre-Order Traversal
     @staticmethod
