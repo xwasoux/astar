@@ -1,25 +1,24 @@
+import logging
 import anytree
-from .traverse import ANodeTraverser
+from anytree import RenderTree
+
+from ..nodes import ANode
+from .traverse import AllNodeTraverser
 
 class AstAnalyser:
 
     @staticmethod
-    def allNodes(root, traversal:str="pre", reverse:bool=False) -> list:
-        if traversal == "pre":
-            return ANodeTraverser.preOrder(root=root, target="all", reversal=reverse)
-        elif traversal == "post":
-            return ANodeTraverser.postOrder(root=root, target="all", reversal=reverse)
+    def print(tree) -> None:
+        _print(tree, "type")
+        return None
 
     @staticmethod
-    def namedNodes(root, traversal:str="pre", reverse:bool=False) -> list:
-        if traversal == "pre":
-            return ANodeTraverser.preOrder(root=root, target="named", reversal=reverse)
-        elif traversal == "post":
-            return ANodeTraverser.postOrder(root=root, target="named", reversal=reverse)
+    def printID(tree) -> None:
+        _print(tree, "id")
+        return None
 
-    @staticmethod
-    def subunitNodes(root, traversal:str="pre", reverse:bool=False) -> list:
-        if traversal == "pre":
-            return ANodeTraverser.preOrder(root=root, target="subunit", reversal=reverse)
-        elif traversal == "post":
-            return ANodeTraverser.postOrder(root=root, target="subunit", reversal=reverse)
+def _print(tree:ANode, attr:str) -> None:
+    logging.basicConfig(format='%(message)s',
+                        level=logging.INFO)
+    logging.info(RenderTree(tree).by_attr(attr))
+    return None
