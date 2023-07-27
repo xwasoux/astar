@@ -1,8 +1,7 @@
-import anytree
 from os import path
-from ..nodes.node import ANode
 from tree_sitter import Language, Parser, Node
 
+from ..nodes.node import ANode
 from ._nodeAdd import _addNode
 
 LIB_PATH = path.join(path.dirname(__file__), "grammar", "tree-sitter", "languages.so")
