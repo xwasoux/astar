@@ -179,7 +179,7 @@ class ANamedTraverser:
             for child in node.children:
                 __postOrder(node=child)
             if child.is_named:
-                result.append(node.type)
+                result.append(node)
             return None
             
         result = []
@@ -193,7 +193,7 @@ class ANamedTraverser:
             for child in reversed(node.children):
                 __postOrder(node=child)
             if child.is_named:
-                result.append(node.type)
+                result.append(node)
             return None
             
         result = []
