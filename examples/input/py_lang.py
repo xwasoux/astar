@@ -1,5 +1,7 @@
-def max(a, b):
+def func(a, b):
     if a > b:
         return a
-    else:
+    elif a < b:
         return b
+    else:
+        return a
