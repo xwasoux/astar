@@ -1,6 +1,5 @@
 from os import path
-from astars import AParser
-from anytree import RenderTree
+from astars import AParser, AstAnalyser
 
 def main():
     with open(path.join(path.dirname(__file__), "input", "py_lang.py")) as f:
@@ -8,7 +7,8 @@ def main():
 
     parser = AParser()
     tree = parser.parse(text=code, lang="python")
-    print(RenderTree(tree).by_attr("type"))
+    AstAnalyser.print(tree)
 
+    return None
 if __name__ == "__main__":
     main()
