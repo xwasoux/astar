@@ -1,9 +1,8 @@
 from ..nodes import ANode
 
 class ACodeGenerator:
-    def __init__(self) -> None:
-        pass
 
+    @staticmethod
     def generate(self, root:ANode) -> str:
         codeList = root.textList
         recoveredCode = ""
