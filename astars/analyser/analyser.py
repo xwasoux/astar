@@ -40,7 +40,7 @@ class AstAnalyser:
 
     @staticmethod
     def selectedPointingCodeDelete(tree:ANode, types:list) -> list:
-        ids = [node.id for node in ATypeTraverser.leftPostOrder(tree) if node.type in types]
+        ids = [node.id for node in AllNodeTraverser.leftPostOrder(tree) if node.type in types]
         return _pointingCodeDelete(tree, ids)
 
     
