@@ -1,8 +1,7 @@
 from os import path
 import logging
 from copy import deepcopy
-from astars import AParser, AstAnalyser, AstOperator, ACodeGenerator
-from anytree import RenderTree
+from astars import AParser, AllNodeTraverser, ANamedTraverser, AIDTraverser, AstAnalyser, AstOperator, ACodeGenerator
 
 logging.basicConfig(format='%(asctime)s -\n %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S',
@@ -14,18 +13,15 @@ def main():
 
     parser = AParser()
     tree = parser.parse(text=code, lang="python")
-    logging.info(RenderTree(tree).by_attr("type"))
+    AstAnalyser.print(tree)
 
-    operator = AstOperator()
-    generator = ACodeGenerator()
-    logging.info(generator.generate(root=tree))
+    logging.info(ACodeGenerator.generate(root=tree))
 
-    duplicatedTree = deepcopy(tree)
-    allNodeList = AstAnalyser.allNodes(duplicatedTree, "post", True)
+    seqRes = AstAnalyser.backwardSequencialCodeDelete(tree)
+    for east in seqRes:
+        AstAnalyser.print(east)
+        ACodeGenerator.generate(east)
 
-    for subtree in allNodeList:
-        editedTree = operator.delete(root=duplicatedTree, target=subtree)
-        logging.info(generator.generate(root=editedTree))
 
 if __name__ == "__main__":
     main()
