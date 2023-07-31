@@ -3,6 +3,7 @@ from .parser import AParser
 from .analyser import AstAnalyser
 from .analyser import Aupdater
 from .analyser import AllNodeTraverser
+from .analyser import ATypeTraverser
 from .analyser import AIDTraverser
 from .analyser import ANamedTraverser
 from .analyser import AstOperator
@@ -13,6 +14,7 @@ __all__ = ["ANode",
            "Aupdater", 
            "AstAnalyser", 
            "AllNodeTraverser", 
+           "ATypeTraverser", 
            "AIDTraverser", 
            "ANamedTraverser", 
            "AstOperator", 
