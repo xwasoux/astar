@@ -13,34 +13,34 @@ from .searcher import ASearcher
 class AstAnalyser:
 
     @staticmethod
-    def print(tree) -> None:
+    def print(tree:ANode) -> None:
         _print(tree, "type")
         return None
 
     @staticmethod
-    def printID(tree) -> None:
+    def printID(tree:ANode) -> None:
         _print(tree, "id")
         return None
     
     @staticmethod
-    def printAny(tree, attr:str) -> None:
+    def printAny(tree:ANode, attr:str) -> None:
         _print(tree, attr)
         return None
     
     @staticmethod
-    def forwardSequencialCodeDelete(tree) -> list:
+    def forwardSequencialCodeDelete(tree:ANode) -> list:
         return _sequencialCodeDlete(tree, False)
 
     @staticmethod
-    def backwardSequencialCodeDelete(tree) -> list:
+    def backwardSequencialCodeDelete(tree:ANode) -> list:
         return _sequencialCodeDlete(tree, True)
 
     @staticmethod
-    def pointingCodeDelete(tree) -> list:
+    def pointingCodeDelete(tree:ANode) -> list:
         return _pointingCodeDelete(tree)
 
     @staticmethod
-    def selectedPointingCodeDelete(tree, types:list) -> list:
+    def selectedPointingCodeDelete(tree:ANode, types:list) -> list:
         ids = [node.id for node in ATypeTraverser.leftPostOrder(tree) if node.type in types]
         return _pointingCodeDelete(tree, ids)
 
