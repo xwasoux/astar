@@ -3,7 +3,7 @@ from ..nodes import ANode
 class ACodeGenerator:
 
     @staticmethod
-    def generate(self, root:ANode) -> str:
+    def generate(root:ANode) -> str:
         codeList = root.textList
         recoveredCode = ""
         recoveredCodeList = []
