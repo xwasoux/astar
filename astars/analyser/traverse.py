@@ -1,6 +1,3 @@
-from anytree import Walker
-from anytree import PreOrderIter, PostOrderIter
-
 from ..nodes import ANode
 
 subUnitName = [

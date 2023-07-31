@@ -1,5 +1,4 @@
 import logging
-import anytree
 from copy import deepcopy
 from anytree import RenderTree
 
