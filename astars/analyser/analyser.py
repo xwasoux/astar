@@ -55,8 +55,9 @@ def _sequencialCodeDlete(tree:ANode, reversal:bool) -> list:
         allNodeList = AllNodeTraverser.rightPostOrder(dupTree)
     
     for subtree in allNodeList:
-        editedTree = AstOperator.delete(root=dupTree, target=subtree)
-        res.append(deepcopy(editedTree))
+        if not subtree.is_root:
+            editedTree = AstOperator.delete(root=dupTree, target=subtree)
+            res.append(deepcopy(editedTree))
     return res
 
 def _pointingCodeDelete(tree:ANode, selections:list=None) -> list:
@@ -69,8 +70,9 @@ def _pointingCodeDelete(tree:ANode, selections:list=None) -> list:
         dupTree = deepcopy(tree)
         targetNode = ASearcher.searchNode(dupTree, str(nodeId))
 
-        editedTree = AstOperator.delete(root=dupTree, target=targetNode)
-        res.append(editedTree)
+        if not targetNode.is_root:
+            editedTree = AstOperator.delete(root=dupTree, target=targetNode)
+            res.append(editedTree)
 
     return res
 
