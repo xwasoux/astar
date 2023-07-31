@@ -6,3 +6,4 @@ from .traverse import AIDTraverser
 from .traverse import ANamedTraverser
 from .operator import AstOperator
 from .generator import ACodeGenerator
+from .searcher import ASearcher

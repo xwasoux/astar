@@ -8,6 +8,7 @@ from .analyser import AIDTraverser
 from .analyser import ANamedTraverser
 from .analyser import AstOperator
 from .analyser import ACodeGenerator
+from .analyser import ASearcher
 
 __all__ = ["ANode", 
            "AParser", 
@@ -18,6 +19,7 @@ __all__ = ["ANode",
            "AIDTraverser", 
            "ANamedTraverser", 
            "AstOperator", 
-           "ACodeGenerator"]
+           "ACodeGenerator",
+           "ASearcher"]
 
 __version__ = "0.0.1"
