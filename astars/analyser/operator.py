@@ -2,15 +2,28 @@ import anytree
 from ..nodes import ANode
 from .updater import Aupdater
 
+
+def rootmuch(func):
+    def wrapper(*args, **kwargs):
+        root = kwargs["root"]
+        droot = kwargs["target"].root
+
+        if root == droot:
+            return func(*args, **kwargs)
+        else:
+            raise Exception("Tree objects are not identical! Cheke the arguments.")
+    return wrapper
+
+
 class AstOperator:
-    def __init__(self) -> None:
-        pass
 
     def insert(self, root:ANode, target:ANode, subtree:ANode) -> ANode:
         subtree.parent = target
         return root
 
-    def delete(self, root:ANode, target:ANode) -> ANode:
+    @staticmethod
+    @rootmuch
+    def delete(root:ANode, target:ANode) -> ANode:
         targetParent = target.parent
         target.parent = None
 
