@@ -1,6 +1,8 @@
 from anytree import Walker
 from anytree import PreOrderIter, PostOrderIter
 
+from ..nodes import ANode
+
 subUnitName = [
     "function_definition", 
     "class_definition", 
@@ -27,8 +29,8 @@ subUnitName = [
 class AllNodeTraverser:
     ## Pre-Order Traversal
     @staticmethod
-    def leftPreOrder(root) -> list:
-        def __preOrder(node) -> None:
+    def leftPreOrder(root:ANode) -> list:
+        def __preOrder(node:ANode) -> None:
             nonlocal result
             for child in node.children:
                 result.append(child)
@@ -40,8 +42,8 @@ class AllNodeTraverser:
         return result
             
     @staticmethod
-    def rightPreOrder(root) -> list:
-        def __preOrder(node) -> None:
+    def rightPreOrder(root:ANode) -> list:
+        def __preOrder(node:ANode) -> None:
             nonlocal result
             for child in reversed(node.children):
                 result.append(child)
@@ -55,8 +57,8 @@ class AllNodeTraverser:
     
     ## Post-Order Traversal
     @staticmethod
-    def leftPostOrder(root) -> list:
-        def __postOrder(node) -> None:
+    def leftPostOrder(root:ANode) -> list:
+        def __postOrder(node:ANode) -> None:
             nonlocal result
             for child in node.children:
                 __postOrder(node=child)
@@ -68,8 +70,8 @@ class AllNodeTraverser:
         return result
 
     @staticmethod
-    def rightPostOrder(root) -> list:
-        def __postOrder(node) -> None:
+    def rightPostOrder(root:ANode) -> list:
+        def __postOrder(node:ANode) -> None:
             nonlocal result
             for child in reversed(node.children):
                 __postOrder(node=child)
@@ -85,8 +87,8 @@ class AllNodeTraverser:
 class ATypeTraverser:
     ## Pre-Order Traversal
     @staticmethod
-    def leftPreOrder(root) -> list:
-        def __preOrder(node) -> None:
+    def leftPreOrder(root:ANode) -> list:
+        def __preOrder(node:ANode) -> None:
             nonlocal result
             for child in node.children:
                 result.append(child.type)
@@ -98,8 +100,8 @@ class ATypeTraverser:
         return result
             
     @staticmethod
-    def rightPreOrder(root) -> list:
-        def __preOrder(node) -> None:
+    def rightPreOrder(root:ANode) -> list:
+        def __preOrder(node:ANode) -> None:
             nonlocal result
             for child in reversed(node.children):
                 result.append(child.type)
@@ -113,8 +115,8 @@ class ATypeTraverser:
     
     ## Post-Order Traversal
     @staticmethod
-    def leftPostOrder(root) -> list:
-        def __postOrder(node) -> None:
+    def leftPostOrder(root:ANode) -> list:
+        def __postOrder(node:ANode) -> None:
             nonlocal result
             for child in node.children:
                 __postOrder(node=child)
@@ -126,8 +128,8 @@ class ATypeTraverser:
         return result
 
     @staticmethod
-    def rightPostOrder(root) -> list:
-        def __postOrder(node) -> None:
+    def rightPostOrder(root:ANode) -> list:
+        def __postOrder(node:ANode) -> None:
             nonlocal result
             for child in reversed(node.children):
                 __postOrder(node=child)
@@ -143,8 +145,8 @@ class ATypeTraverser:
 class AIDTraverser:
     ## Pre-Order Traversal
     @staticmethod
-    def leftPreOrder(root) -> list:
-        def __preOrder(node) -> None:
+    def leftPreOrder(root:ANode) -> list:
+        def __preOrder(node:ANode) -> None:
             nonlocal result
             for child in node.children:
                 result.append(child.id)
@@ -156,8 +158,8 @@ class AIDTraverser:
         return result
             
     @staticmethod
-    def rightPreOrder(root) -> list:
-        def __preOrder(node) -> None:
+    def rightPreOrder(root:ANode) -> list:
+        def __preOrder(node:ANode) -> None:
             nonlocal result
             for child in reversed(node.children):
                 result.append(child.id)
@@ -171,8 +173,8 @@ class AIDTraverser:
     
     ## Post-Order Traversal
     @staticmethod
-    def leftPostOrder(root) -> list:
-        def __postOrder(node) -> None:
+    def leftPostOrder(root:ANode) -> list:
+        def __postOrder(node:ANode) -> None:
             nonlocal result
             for child in node.children:
                 __postOrder(node=child)
@@ -184,8 +186,8 @@ class AIDTraverser:
         return result
 
     @staticmethod
-    def rightPostOrder(root) -> list:
-        def __postOrder(node) -> None:
+    def rightPostOrder(root:ANode) -> list:
+        def __postOrder(node:ANode) -> None:
             nonlocal result
             for child in reversed(node.children):
                 __postOrder(node=child)
@@ -201,8 +203,8 @@ class AIDTraverser:
 class ANamedTraverser:
     ## Pre-Order Traversal
     @staticmethod
-    def leftPreOrder(root) -> list:
-        def __preOrder(node) -> None:
+    def leftPreOrder(root:ANode) -> list:
+        def __preOrder(node:ANode) -> None:
             nonlocal result
             for child in node.children:
                 if child.is_named:
@@ -215,8 +217,8 @@ class ANamedTraverser:
         return result
             
     @staticmethod
-    def rightPreOrder(root) -> list:
-        def __preOrder(node) -> None:
+    def rightPreOrder(root:ANode) -> list:
+        def __preOrder(node:ANode) -> None:
             nonlocal result
             for child in reversed(node.children):
                 if child.is_named:
@@ -231,8 +233,8 @@ class ANamedTraverser:
     
     ## Post-Order Traversal
     @staticmethod
-    def leftPostOrder(root) -> list:
-        def __postOrder(node) -> None:
+    def leftPostOrder(root:ANode) -> list:
+        def __postOrder(node:ANode) -> None:
             nonlocal result
             for child in node.children:
                 __postOrder(node=child)
@@ -245,8 +247,8 @@ class ANamedTraverser:
         return result
 
     @staticmethod
-    def rightPostOrder(root) -> list:
-        def __postOrder(node) -> None:
+    def rightPostOrder(root:ANode) -> list:
+        def __postOrder(node:ANode) -> None:
             nonlocal result
             for child in reversed(node.children):
                 __postOrder(node=child)
