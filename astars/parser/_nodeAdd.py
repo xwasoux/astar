@@ -21,14 +21,9 @@ tempAttr = [
     "text", "type", "walk"
     ]
 
-def _addNode(source, parent=None, textList:list=None):
+def _addNode(source, parent=None):
     sourceAttrs = dir(source)
     filterdAttrs = [attr for attr in sourceAttrs if attr in tempAttr]
     dictAttrs = {attr:getattr(source, attr) for attr in filterdAttrs}
         
-    if parent == None:
-        return ANode(name=str(dictAttrs["id"]), 
-                     parent=parent, dictAttrs=dictAttrs, textList=textList)
-    else:
-        return ANode(name=str(dictAttrs["id"]), 
-                     parent=parent, dictAttrs=dictAttrs)
+    return ANode(name=str(dictAttrs["id"]), parent=parent, dictAttrs=dictAttrs)
