@@ -13,11 +13,11 @@ class Basetree:
     def __str__(self) -> str:
         return RenderTree(self.root).by_attr("type")
 
-class Parsetree(Basetree):
+class AParseTree(Basetree):
     def __init__(self, tree:ANode, code:str, lang:str) -> None:
         super().__init__(tree, code, lang)
 
-class EditedParsetree(Basetree):
+class AEditedParseTree(Basetree):
     def __init__(self, tree:ANode, code:str, lang:str) -> None:
         super().__init__(tree, code, lang)
 

@@ -1,2 +1,2 @@
-from .tree import Parsetree
-from .tree import EditedParsetree
+from .tree import AParseTree
+from .tree import AEditedParseTree
