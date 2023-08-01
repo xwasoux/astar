@@ -1,4 +1,5 @@
 from ..nodes import ANode
+from ..tree import AParseTree, AEditedParseTree
 
 subUnitName = [
     "function_definition", 
@@ -28,7 +29,7 @@ class ATraverser:
     def __init__(self) -> None:
         pass
     
-    def preorderTraverse(self, tree:ANode) -> "Traverser":
+    def preorderTraverse(self, tree:AParseTree) -> "Traverser":
         def __preOrder(node:ANode) -> None:
             for child in node.children:
                 self.preAllNodes.append(child)
@@ -46,7 +47,7 @@ class ATraverser:
         __preOrder(node=tree.root)
         return self
             
-    def postorderTraverse(self, tree:ANode) -> "Traverser":
+    def postorderTraverse(self, tree:AParseTree) -> "Traverser":
         def __postOrder(node:ANode) -> None:
             for child in node.children:
                 __postOrder(node=child)
@@ -71,7 +72,7 @@ class AReverseTraverser:
     def __init__(self) -> None:
         pass
     
-    def preorderTraverse(self, tree:ANode) -> "Traverser":
+    def preorderTraverse(self, tree:AParseTree) -> "Traverser":
         def __preOrder(node:ANode) -> None:
             for child in reversed(node.children):
                 self.preAllNodes.append(child)
@@ -89,7 +90,7 @@ class AReverseTraverser:
         __preOrder(node=tree.root)
         return self
             
-    def postorderTraverse(self, tree:ANode) -> "Traverser":
+    def postorderTraverse(self, tree:AParseTree) -> "Traverser":
         def __postOrder(node:ANode) -> None:
             for child in reversed(node.children):
                 __postOrder(node=child)
