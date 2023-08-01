@@ -3,7 +3,7 @@ from tree_sitter import Language, Parser, Node
 
 from ..nodes.node import ANode
 from ._nodeAdd import _addNode
-from ..tree import Parsetree
+from ..tree import AParseTree
 
 class AParser:
 
@@ -29,7 +29,7 @@ class AParser:
         tree = parser.parse(bytes(text, "utf8"))
         cst = _ts2Anytree(source=tree.root_node, parent=None)
 
-        parsetree = Parsetree(tree=cst, code=text, lang=lang)
+        parsetree = AParseTree(tree=cst, code=text, lang=lang)
 
         return parsetree
 
