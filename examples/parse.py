@@ -1,5 +1,5 @@
 from os import path
-from astars import AParser, AstAnalyser
+from astars import AParser
 
 def main():
     with open(path.join(path.dirname(__file__), "input", "py_lang.py")) as f:

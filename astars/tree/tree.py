@@ -2,11 +2,12 @@ from anytree import RenderTree
 
 from ..nodes import ANode
 
-class Basetree:
+class AParseTree:
     def __init__(self, tree:ANode, code:str, lang:str) -> None:
         self.root = tree
         self.originalCode = code
         self.language = lang
+        self.is_edited = False
 
         self.shreddedCode = _splitText(code)
 
@@ -17,15 +18,6 @@ class Basetree:
         return 
 
 
-
-
-class AParseTree(Basetree):
-    def __init__(self, tree:ANode, code:str, lang:str) -> None:
-        super().__init__(tree, code, lang)
-
-class AEditedParseTree(Basetree):
-    def __init__(self, tree:ANode, code:str, lang:str) -> None:
-        super().__init__(tree, code, lang)
 
 
 def _splitText(text:str) -> list:
