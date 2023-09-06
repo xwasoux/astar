@@ -5,13 +5,19 @@ from ..nodes import ANode
 class Basetree:
     def __init__(self, tree:ANode, code:str, lang:str) -> None:
         self.root = tree
-        self.code = code
+        self.originalCode = code
         self.language = lang
 
-        self.codeShredded = _splitText(code)
+        self.shreddedCode = _splitText(code)
 
     def __str__(self) -> str:
         return RenderTree(self.root).by_attr("type")
+
+    def textUpdate(self) -> str:
+        return 
+
+
+
 
 class AParseTree(Basetree):
     def __init__(self, tree:ANode, code:str, lang:str) -> None:
