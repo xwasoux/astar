@@ -161,6 +161,7 @@ cython_debug/
 
 # Options
 # Directory 
+test/
 
 # File extentions
 *.csv
