@@ -1,7 +1,7 @@
 import anytree
 
 class ANode(anytree.NodeMixin):
-    allAttr = [
+    allAttr = (
         "child_by_field_id", "child_by_field_name", "child_count", 
         "children", "children_by_field_id", "children_by_field_name", 
         "end_byte", "end_point", "field_name_for_child", 
@@ -11,9 +11,9 @@ class ANode(anytree.NodeMixin):
         "parent", "prev_named_sibling", "prev_sibling", 
         "sexp", "start_byte", "start_point", 
         "text", "type", "walk"
-        ]
+        )
 
-    def __init__(self, name, parent=None, dictAttrs:dict=None, **kwargs):
+    def __init__(self, name:str, parent=None, dictAttrs:dict=None, **kwargs):
         super().__init__()
         self.name = name
         self.parent = parent
@@ -23,14 +23,5 @@ class ANode(anytree.NodeMixin):
 
         self.__dict__.update(kwargs)
 
-    # def __repr__(self):
-    #     return f"{self.__class__.__name__}({self.name})"
-
-    # def __str__(self):
-    #     return self.name
-
-    # def __eq__(self, other):
-    #     return self.name == other.name
-
-    # def __hash__(self):
-    #     return hash(self.name)
+    def __repr__(self):
+        return f"{self.__class__.__name__}{self.name, self.type}"
