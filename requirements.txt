@@ -7,3 +7,4 @@ anytree
 graphviz
 pydot
 tree_sitter
+gitpython
