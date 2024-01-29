@@ -18,7 +18,6 @@ RUN pip install --upgrade pip
 
 COPY . /app
 COPY requirements.txt .
-COPY addSubmodules.sh .
 WORKDIR /app
 
 RUN pip install -r requirements.txt

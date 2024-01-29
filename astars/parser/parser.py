@@ -1,4 +1,6 @@
-from os import path
+import os
+from typing import Any, Dict, List, Optional, Tuple, Union
+from git import Repo
 from tree_sitter import Language, Parser, Node
 
 from ..nodes.node import ANode
@@ -7,29 +9,45 @@ from ..tree import AParseTree
 
 class AParser:
 
-    LIB_PATH = path.join(path.dirname(__file__), "grammar", "tree-sitter", "languages.so")
-    Language.build_library(
-        LIB_PATH,
-        [
-            path.join(path.dirname(__file__), "grammar", "tree-sitter", "tree-sitter-python"),
-            path.join(path.dirname(__file__), "grammar", "tree-sitter", "tree-sitter-c"),
-            path.join(path.dirname(__file__), "grammar", "tree-sitter", "tree-sitter-cpp"),
-        ]
-    )
+    def __init__(self, lang: str, build_to: str = None, force_clone: bool = False) -> None:
+        self.lang = lang
+        if build_to == None:
+            self.parser_dir = os.path.join(os.path.dirname(__file__), "parsers")
+        else:
+            self.parser_dir = os.path.join(build_to, "parsers")
 
-    def __init__(self) -> None:
-        pass
+        if not os.path.exists(self.parser_dir):
+            os.makedirs(self.parser_dir)
 
-    @classmethod
-    def parse(cls, text:str, lang:str) -> None:
-        cls.ANY_LANGUAGE = Language(cls.LIB_PATH, lang)
+        self.url = "https://github.com/tree-sitter/tree-sitter-{}.git".format(lang)
+        self.clone_dir = os.path.join(self.parser_dir, "tree-sitter-{}".format(lang))
+        try:
+            self.repo = Repo.clone_from(url=self.url, to_path=self.clone_dir)
+        except:
+            if force_clone:
+                if os.path.exists(os.path.join(self.parser_dir, "tree-sitter-{}".format(self.lang))):
+                    os.remove(os.path.join(self.parser_dir, "tree-sitter-{}".format(self.lang)))
+                self.repo = Repo.clone_from(url=self.url, to_path=self.clone_dir)
+            print("Repository already exists. If you want to force clone, please set force_clone=True")
+
+        self.LIB_PATH = os.path.join(self.parser_dir, "parser-{}.so".format(self.lang))
+        Language.build_library(
+            self.LIB_PATH,
+            [
+                self.clone_dir
+            ]
+        )
+
+
+    def parse(self, text: str) -> None:
+        self.ANY_LANGUAGE = Language(self.LIB_PATH, self.lang)
         parser = Parser()
-        parser.set_language(cls.ANY_LANGUAGE)
+        parser.set_language(self.ANY_LANGUAGE)
 
         tree = parser.parse(bytes(text, "utf8"))
         cst = _ts2Anytree(source=tree.root_node, parent=None)
 
-        parsetree = AParseTree(tree=cst, code=text, lang=lang)
+        parsetree = AParseTree(tree=cst, code=text, lang=self.lang)
 
         return parsetree
 
