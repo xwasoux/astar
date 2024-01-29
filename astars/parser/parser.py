@@ -6,6 +6,7 @@ from tree_sitter import Language, Parser, Node
 from ..nodes.node import ANode
 from ._nodeAdd import _addNode
 from ..tree import AParseTree
+from ._utils import remove_comments_and_docstrings
 
 class AParser:
 
@@ -38,6 +39,8 @@ class AParser:
             ]
         )
 
+    def preprocess(self, text: str) -> str:
+        return remove_comments_and_docstrings(text, self.lang)
 
     def parse(self, text: str) -> None:
         self.ANY_LANGUAGE = Language(self.LIB_PATH, self.lang)
