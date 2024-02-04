@@ -1,4 +1,5 @@
 import os
+import shutil
 from typing import Any, Dict, List, Optional, Tuple, Union
 from git import Repo
 from tree_sitter import Language, Parser, Node
@@ -6,6 +7,7 @@ from tree_sitter import Language, Parser, Node
 from ..nodes.node import ANode
 from ._nodeAdd import _addNode
 from ..tree import AParseTree
+from ._utils import remove_comments_and_docstrings
 
 class AParser:
 
@@ -20,13 +22,13 @@ class AParser:
             os.makedirs(self.parser_dir)
 
         self.url = "https://github.com/tree-sitter/tree-sitter-{}.git".format(lang)
-        self.clone_dir = os.path.join(self.parser_dir, "tree-sitter-{}".format(lang))
+        self.clone_dir = os.path.join(self.parser_dir, "tree-sitter-{}".format(self.lang))
         try:
             self.repo = Repo.clone_from(url=self.url, to_path=self.clone_dir)
         except:
             if force_clone:
-                if os.path.exists(os.path.join(self.parser_dir, "tree-sitter-{}".format(self.lang))):
-                    os.remove(os.path.join(self.parser_dir, "tree-sitter-{}".format(self.lang)))
+                if os.path.exists(self.clone_dir):
+                    shutil.rmtree(self.clone_dir)
                 self.repo = Repo.clone_from(url=self.url, to_path=self.clone_dir)
             print("Repository already exists. If you want to force clone, please set force_clone=True")
 
@@ -38,6 +40,8 @@ class AParser:
             ]
         )
 
+    def preprocess(self, text: str) -> str:
+        return remove_comments_and_docstrings(text, self.lang)
 
     def parse(self, text: str) -> None:
         self.ANY_LANGUAGE = Language(self.LIB_PATH, self.lang)

@@ -7,12 +7,12 @@ logging.basicConfig(format='%(asctime)s - %(message)s',
                     level=logging.INFO)
 
 def main():
-    with open(os.path.join(os.path.dirname(__file__), "input", "python_sample.py")) as f:
+    with open(os.path.join(os.path.dirname(__file__), "input", "java_sample.java")) as f:
         code = f.read()
 
-    py_parser = AParser(lang="python")
-    code = py_parser.preprocess(text=code)
-    tree = py_parser.parse(text=code)
+    java_parser = AParser(lang="java")
+    code = java_parser.preprocess(text=code)
+    tree = java_parser.parse(text=code)
     logging.info(tree)
 
     ## Forward Sequencial Pruning

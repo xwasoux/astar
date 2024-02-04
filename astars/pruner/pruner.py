@@ -7,19 +7,19 @@ from ..traverser import ATraverser, AReverseTraverser
 class APruner:
 
     @staticmethod
-    def seqForwardPrune(tree:AParseTree) -> tuple:
+    def sequencialForwardPrune(tree:AParseTree) -> tuple:
         return _sequencialCodeDlete(tree=tree, reversal=False)
 
     @staticmethod
-    def seqBackwardPrune(tree:AParseTree) -> tuple:
+    def sequencialBackwardPrune(tree:AParseTree) -> tuple:
         return _sequencialCodeDlete(tree=tree, reversal=True)
 
     @staticmethod
-    def seqPointingPrune(tree:AParseTree) -> tuple:
+    def sequencialSubtreePrune(tree:AParseTree) -> tuple:
         return _pointingCodeDelete(tree=tree)
     
     @staticmethod
-    def selectedPointingPrune(tree:AParseTree, selections:list) -> tuple:
+    def selectedSubtreePrune(tree:AParseTree, selections:list) -> tuple:
         return _pointingCodeDelete(tree=tree, selections=selections)
 
 
