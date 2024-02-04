@@ -1,4 +1,4 @@
-from os import path
+import os
 import logging
 from copy import deepcopy
 from astars import AParser, APruner
@@ -8,28 +8,28 @@ logging.basicConfig(format='%(asctime)s - %(message)s',
                     level=logging.INFO)
 
 def main():
-    with open(path.join(path.dirname(__file__), "input", "py_lang.py")) as f:
+    with open(os.path.join(os.path.dirname(__file__), "input", "python_sample.py")) as f:
         code = f.read()
 
-    tree = AParser.parse(text=code, lang="python")
+    py_parser = AParser(lang="python")
+    code = py_parser.preprocess(text=code)
+    tree = py_parser.parse(text=code)
     logging.info(tree)
 
     ## Single Node Pruning
-    logging.info("<<< Single Node Pruning >>>")
+    logging.info("<<< Subtree Pruning >>>")
     logging.info(f"Original code: \n{tree.recover()}")
-    pointRes = APruner.seqPointingPrune(tree=tree)
-    for east in pointRes:
+    res = APruner.sequencialSubtreePrune(tree=tree)
+    for east in res:
         logging.info(f"\n{east[0].recover()}")
-
     
     ## Selected Type Pruning
-    logging.info("<<< Selected Type Pruning >>>")
+    logging.info("<<< Selected Subtree Pruning >>>")
     logging.info(f"Original code: \n{tree.recover()}")
-    selections = ["if_statement", "elif_clause", "else_clause", 
-                "for_statement", "while_statement"]
+    selections = ["if_statement", "elif_clause", "else_clause", "for_statement", "while_statement"]
     logging.info(f"Selections of Node Type: {selections}")
-    selectPointRes = APruner.selectedPointingPrune(tree=tree, selections=selections)
-    for east in selectPointRes:
+    res = APruner.selectedSubtreePrune(tree=tree, selections=selections)
+    for east in res:
         logging.info(f"\n{east[0].recover()}")
 
 if __name__ == "__main__":
