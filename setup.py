@@ -2,7 +2,7 @@ from setuptools import setup
 import astars
 
 NAME = 'astars'
-DESCRIPTION = "astars: An unified programming language parser & analyse AST tool for Souece Code Analysis.  "
+DESCRIPTION = "Astars: AST analysis and manipulation tools for diverse languages."
 
 AUTHOR = 'Wakana Hashimoto'
 AUTHOR_EMAIL = 'oxwasouxo@gmail.com'
