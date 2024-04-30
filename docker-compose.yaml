@@ -5,14 +5,27 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-      # args:
-      #   # User setting
-      #   - USERNAME=${USER_NAME}
-      #   - USER_UID=${USER_UID}
-      #   - USER_GID=${USER_GID}
+    #   args:
+    #     # User setting
+    #     - USERNAME=${USER_NAME}
+    #     - USER_UID=${USER_UID}
+    #     - USER_GID=${USER_GID}
+    #     # Network setting
+    #     - HTTP_PROXY=${HTTP_PROXY}
+    #     - HTTPS_PROXY=${HTTPS_PROXY}
+    #     - http_proxy=${HTTP_PROXY}
+    #     - https_proxy=${HTTPS_PROXY}
+    # environment:
+    #   # Network setting
+    #   - HTTP_PROXY=${HTTP_PROXY}
+    #   - HTTPS_PROXY=${HTTPS_PROXY}
+    #   - http_proxy=${HTTP_PROXY}
+    #   - https_proxy=${HTTPS_PROXY}
+
 
     volumes:
       - .:/app
+    
 
     # Uncomment the next four lines if you will use a ptrace-based debugger like C++, Go, and Rust.
     # cap_add:
