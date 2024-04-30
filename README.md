@@ -20,6 +20,13 @@ The package is tested under Python 3. It can be installed via:
 pip install astars
 ```
 
+Or, you can install the package from the source code:
+```
+git clone https://github.com/xwasoux/astars.git
+cd astars/astars
+pip install .
+```
+
 ## Usage
 
 Parsing a code snippet and printing the AST:
